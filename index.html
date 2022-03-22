@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aim Trainer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="size-wrapper">
+    <div id="controls">
+      <label for="targetDuration">
+        Target Duration (s)
+        <input id="targetDuration" type="number" value="2" min="1" max="5"/>
+      </label>
+      <br>
+      <label for="targetDiameter">
+        Target Diameter (px)
+        <input id="targetDiameter" type="range" value="50" min="10" max="200"/>
+      </label>
+      <br>
+      <label for="spawnInterval">
+        Target Interval (ms)
+        <input id="spawnInterval" type="range" value="750" min="100" max="5000"/>
+      </label>
+    </div>
+    <div id="target-container">
+  </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
