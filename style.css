@@ -1,3 +1,16 @@
+/* === THEME START === */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap");
+
+:root {
+  --p-background-color: #040d13;
+  --p-color: #ddefff;
+  --s-color: #10344dd5;
+  --p-color-dim: #79848d;
+  --input-bg: #00000075;
+  --input-border: #293a49;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -5,13 +18,93 @@ html {
   box-sizing: inherit;
 }
 
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
 html,
 body {
-  width: 100%;
-  height: 100%;
   margin: 0;
-  background-color: rgb(22, 22, 22);
-  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  background-color: var(--p-background-color);
+  color: var(--p-color);
+}
+
+button {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 0px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1px solid #000;
+}
+
+button.success {
+  color: #00b887;
+  border: solid 1px #00b887;
+  background-color: transparent;
+}
+
+select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 0px;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--p-color);
+}
+
+input[type="text"] {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 0px;
+  padding: 8px;
+  color: var(--p-color);
+}
+
+input[type="number"] {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 0px;
+  padding: 8px;
+  color: var(--p-color);
+}
+
+input:read-only[type="text"] {
+  background-color: #090b0c;
+  border: 1px solid #0c1116;
+  border-radius: 0px;
+  padding: 8px;
+  color: #464646;
+}
+
+*:focus {
+  outline: 1px solid #527ea7;
+}
+
+input:read-only:focus[type="text"] {
+  outline: 1px solid #012546;
+}
+
+textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 0px;
+  padding: 8px;
+  color: var(--p-color);
+  outline: none;
+}
+
+/* === THEME END === */
+
+/* ========== CUSTOM STYLING ============ */
+
+html, body {
+  width: 100%;
+  height: 100%
 }
 
 body {
@@ -31,8 +124,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(180, 180, 180);
-  color: rgb(100, 100, 100);
 }
 
 #target-container {
@@ -40,7 +131,7 @@ body {
   height: 100%;
   width: 100%;
   cursor: crosshair;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--p-color);
 }
 
 #scoreboard {
@@ -49,7 +140,7 @@ body {
   left: 0;
   z-index: 10;
   width: 100%;
-  background-color: rgba(55, 55, 55, .85);
+  background-color: var(--s-color);
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -57,10 +148,14 @@ body {
   justify-content: center;
 }
 
+#targetHits, #accuracy {
+  color: #00b887;
+}
+
 .target {
   width: 50px;
   height: 50px;
-  background-color: #0497f1;
+  background-color: var(--p-background-color);
   border-radius: 50%;
   position: absolute;
   animation-name: live;
@@ -82,9 +177,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: rgba(55, 55, 55, .85);
+  background-color: var(--s-color);
   padding: 1rem;
-  color: white;
+  color: var(--p-color);
   gap: 1rem;
 }
 
