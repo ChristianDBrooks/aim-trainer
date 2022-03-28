@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -19,7 +20,6 @@ html, body {
   box-sizing: border-box;
   background-color: rgb(55, 55, 55);
   height: 100px;
-  width: 100%;
   padding: 1rem;
 }
 
@@ -29,6 +29,10 @@ html, body {
   width: 100%;
   cursor: crosshair;
   background-color: rgb(255, 255, 255);
+}
+
+#scoreboard {
+  color: #fff;
 }
 
 .target {
@@ -45,6 +49,10 @@ html, body {
 }
 
 @keyframes live {
-  from {transform: scale(0);}
-  to {transform: scale(1);}
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
