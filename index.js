@@ -1,14 +1,20 @@
 window.addEventListener("DOMContentLoaded", (event) => {
   const controlsEl = document.getElementById("controls");
   const scoreBoardEl = document.getElementById("scoreboard");  
+  const screenEl = document.getElementById("screen");
   const targetContainerEl = document.getElementById("target-container");
   const overlayEl = document.getElementById("overlay");
   const targetDurationEl = document.getElementById("targetDuration");
   const targetDiameterEl = document.getElementById("targetDiameter");
   const spawnIntervalEl = document.getElementById("spawnInterval");
+  const screenWidthEl = document.getElementById("screenWidth");
+  const screenHeightEl = document.getElementById("screenHeight");
   const targetDurationOutEl = document.getElementById("targetDurationOut");
   const targetDiameterOutEl = document.getElementById("targetDiameterOut");
   const spawnIntervalOutEl = document.getElementById("spawnIntervalOut");
+  const fullscreenEl = document.getElementById("fullscreen");
+  const screenWidthOutEl = document.getElementById("screenWidthOut");
+  const screenHeightOutEl = document.getElementById("screenHeightOut");
   const targetHitsOut = document.getElementById("targetHits");
   const missedClicksOut = document.getElementById("missedClicks");
   const totalClicksOut = document.getElementById("totalClicks");
@@ -18,6 +24,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let targetDuration = 2;
   let targetDiameter = 50;
   let spawnInterval = 750;
+  let isFullscreen = true;
+  let screenWidth = '800px';
+  let screenHeight = '600px';
   let targetDurationT = 2;
   let targetDiameterT = 50;
   let spawnIntervalT = 750;
@@ -56,6 +65,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     hideEl(controlsEl);
     hideEl(scoreBoardEl);
     hideEl(overlayEl)
+    showEl(targetContainerEl)
     updateLoop();
   };
 
@@ -65,12 +75,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
     liveTargetEls.forEach((el) => {
       el.dataset.killed = true;
     });
-    targetContainerEl.innerHTML = "";
+    targetContainerEl.innerHTML = ""; 
     updateLoop();
     setScoreboard();
     showEl(controlsEl);
     showEl(scoreBoardEl);
     showEl(overlayEl)
+    hideEl(targetContainerEl)
   };
 
   const targetDurationChange = (event) => {
@@ -87,6 +98,34 @@ window.addEventListener("DOMContentLoaded", (event) => {
     spawnInterval = event.target.value;
     spawnIntervalOutEl.textContent = event.target.value + "ms";
   };
+
+  const handleFullscreenChange = (event) => {
+    isFullscreen = event.target.checked;
+    setResolution();
+  }
+
+  const handleWidthChange = (event) => {
+    screenWidth = event.target.value + "px";
+    screenWidthOutEl.textContent = screenWidth;
+    setResolution();
+  }
+
+  const handleHeightChange = (event) => {
+    screenHeight = event.target.value + "px";
+    screenHeightOutEl.textContent = screenHeight;
+    setResolution();
+  }
+
+  const setResolution = () => {
+    if (isFullscreen) {
+      screenEl.style.width = "";
+      screenEl.style.height = "";
+    } else {
+      screenEl.style.width = screenWidth;
+      screenEl.style.height = screenHeight;
+    }
+
+  }
 
   const handleTargetClick = (event) => {
     if (running && event.target.id.includes("target-container")) {
@@ -140,19 +179,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
     target.remove();
     deadTargets++;
-    console.log("targets dead: ", deadTargets);
   };
 
   const targetHit = (target) => {
     target.dataset.hit = true;
     target.remove();
     hits++;
-    console.log("targets hit: ", hits);
   };
 
   const targetMiss = () => {
     misses++;
-    console.log("targets missed: ", misses);
   };
 
   const getRandomPosition = () => {
@@ -175,6 +211,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
   targetDurationEl.addEventListener("input", targetDurationChange);
   targetDiameterEl.addEventListener("input", targetDiameterChange);
   spawnIntervalEl.addEventListener("input", spawnIntervalChange);
+  fullscreenEl.addEventListener("change", handleFullscreenChange);
+  screenWidthEl.addEventListener("input", handleWidthChange);
+  screenHeightEl.addEventListener("input", handleHeightChange);
   document.addEventListener("mousedown", handleTargetClick);
   document.addEventListener("keydown", handleSpaceBtn);
+  hideEl(targetContainerEl)
 });
