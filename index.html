@@ -4,19 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aim Trainer</title>
+    <title>Christian Brooks | Aim Trainer</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="manifest" href="/icons/site.webmanifest">
-    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/icons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#00aba9">
-    <meta name="msapplication-config" content="/icons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/icons/site.webmanifest" />
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="/icons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
     </style>
   </head>
   <body>
@@ -24,7 +38,7 @@
       <div id="controls-layout">
         <div class="control">
           <p>Target Duration</p>
-          <input id="targetDuration" type="number" value="2" min="1" max="5" />
+          <input id="targetDuration" type="range" value="2" min="1" max="5" />
           <div id="targetDurationOut">2s</div>
         </div>
         <div class="control">
@@ -51,7 +65,7 @@
         </div>
         <div class="control">
           <p>Fullscreen</p>
-          <input id="fullscreen" type="checkbox" id="fullscreen" checked>
+          <input id="fullscreen" class="toggle" type="checkbox" checked />
         </div>
         <div class="control">
           <p>Width</p>
@@ -85,7 +99,9 @@
       <p>Targets Lost: <span id="targetsLost"></span></p>
     </div>
     <div id="screen">
-      <div id="overlay"><p>Press <kbd>Space</kbd> to start / stop trainer.</p></div>
+      <div id="overlay">
+        <p>Press <kbd>Space</kbd> to start / stop trainer.</p>
+      </div>
       <div id="target-container"></div>
     </div>
     <script src="index.js"></script>
